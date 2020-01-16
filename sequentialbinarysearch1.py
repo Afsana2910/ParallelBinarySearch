@@ -19,8 +19,29 @@ def binarysearch(a,low,high,e):
     
     return -1
 
+def duplicate(array,key):
+    locations = []
+    index = binarysearch(array,0,len(array)-1,key)
+    locations.append(index)
+    if index!=-1:
+        loc = index
+        while array[loc+1]==key:
+            loc = loc + 1
+            locations.append(loc)
+        loc = index
+        while array[loc-1]==key:
+            loc = loc -1
+            locations.append(loc)
+            
+        print(locations)
+            
+    else:
+        print("Data not found")
+            
+            
+        
 t1 = time.clock()
 data = np.arange(1000000000)
 data = data.tolist()
-print(binarysearch(data,0,len(data)-1,3))
+duplicate(data,6)
 print("Execution Time is :",time.clock()-t1)
